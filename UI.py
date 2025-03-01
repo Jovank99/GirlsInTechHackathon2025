@@ -162,7 +162,6 @@ back_button = tk.Button(main_frame, text="Back to Case Menu", command=go_back_to
 
 main_frame.pack_forget()
 
-root.mainloop()
 
 
 
