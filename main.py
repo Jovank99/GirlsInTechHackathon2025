@@ -2,6 +2,7 @@ import os
 import json
 import PyPDF2
 import wrapper
+from UI import *
 
 environment = {
     'Folder': ''
@@ -38,8 +39,13 @@ def save_json(data, file):
 def main():
     change_folder('Burks2024')
     text = pdf_to_text('test.pdf')
-    data = parse_data(text)
-    save_json(data, 'data.json')
+    # data = parse_data(text)
+    # save_json(data, 'data.json')
+    
+    
+    root.mainloop()
+    
+    
 
 if __name__ == '__main__':
     main()
