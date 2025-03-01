@@ -1,7 +1,7 @@
 import os
 import json
 import PyPDF2
-# import wrapper
+import wrapper
 
 environment = {
     'Folder': ''
@@ -16,10 +16,10 @@ def change_folder(folder):
 
 def pdf_to_text(file):
     pdf_file = open(environment['Folder'] + file, 'rb')
-    pdf_reader = PyPDF2.PdfFileReader(pdf_file)
+    pdf_reader = PyPDF2.PdfReader(pdf_file)
     text = ''
-    for page_num in range(pdf_reader.numPages):
-        page = pdf_reader.getPage(page_num)
+    for page in pdf_reader.pages:
+        # page = pdf_reader.pages[page_num]
         text += page.extract_text()
     return text
 
@@ -37,6 +37,9 @@ def save_json(data, file):
 
 def main():
     change_folder('Burks2024')
+    text = pdf_to_text('test.pdf')
+    data = parse_data(text)
+    save_json(data, 'data.json')
 
 if __name__ == '__main__':
     main()
